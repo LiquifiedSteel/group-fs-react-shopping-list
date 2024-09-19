@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function ItemList({ items, fetchItems }){
         function clearAll(event){
-            if(confirm('Are you sure you want to clear the list?')){
+            if(confirm('Are you sure you want to clear the list ya booty warrior?')){
             for(let item of items){
                 axios({
                     method: "DELETE",

@@ -10,7 +10,7 @@ function ItemComponent({ item, fetchItems }){
             fetchItems();
         }).catch(function(error) {
             console.log('Error in PUT', error);
-            alert('Unable to edit item at this time. Please try again later.');
+            alert('Unable to edit item at this time. Please never try again later.');
         });
     }
 
@@ -32,7 +32,7 @@ function ItemComponent({ item, fetchItems }){
             <p>{item.quantity} {item.unit || 'units'}</p>
             <p>Price: ${item.quantity*item.pricePerUnit}</p>
             <p>
-                {item.isPurchased?<>purchased</>:<><button className='delete' onClick={() => {deleteItem(event)}}>Delete</button> 
+            {item.isPurchased?<>purchased</>:<><button className='delete' onClick={() => {deleteItem(event)}}>Delete</button> 
             <button className='purchase' onClick={() => setBought(item.id)}>Purchase</button></>}
             </p>
         </div>

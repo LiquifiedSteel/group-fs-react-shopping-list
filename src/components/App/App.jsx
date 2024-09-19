@@ -15,7 +15,7 @@ import CartAndCheckout from '../CartAndCheckout/CartAndCheckout.jsx';
 
 function App() {
     const [items, setItems] = useState([]);
-
+    
 
     function fetchItems(){
         axios({

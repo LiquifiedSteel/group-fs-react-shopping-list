@@ -29,7 +29,7 @@ const addItem = () => {
         setNewItemPrice('')
         fetchItems();
     }).catch(err => {
-        alert('Error your dumb. Fix you are dumb.')
+        alert('Error your dumb. Fix you are dumb. Form is a broke. Seth\'s fault.')
         console.log(err)
     })
 }
@@ -56,42 +56,46 @@ const handleSubmit = (event) => {
         <input
           type="text"
           placeholder="Name"
+          className="form-input"
           value={newItemName}
           onChange={(evt) => setNewItemName(evt.target.value)}
         />
-        <div>
-            Enter a Quantity:
-        </div>
         <label>
           Quantity
         </label>
+        <div>
+            Enter a Quantity:
+        </div>
         <input
           type="text"
           placeholder="Quantity"
+          className="form-input"
           value={newItemQuantity}
           onChange={(evt) => setNewItemQuantity(evt.target.value)}
         />
+         <label>
+          Unit
+        </label>
         <div>
             Enter a Unit:
         </div>
-        <label>
-          Unit
-        </label>
         <input
           type="text"
           placeholder="Unit"
+          className="form-input"
           value={newItemUnit}
           onChange={(evt) => setNewItemUnit(evt.target.value)}
         />
+         <label>
+          Price
+        </label>
          <div>
             Enter a Price:
         </div>
-        <label>
-          Price
-        </label>
         <input
           type="text"
           placeholder="Price"
+          className="form-input"
           value={newItemPrice}
           onChange={(evt) => setNewItemPrice(evt.target.value)}
         />

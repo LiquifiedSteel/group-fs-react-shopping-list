@@ -58,6 +58,10 @@ form {
     transition: background-color 0.3s ease-in-out;
   }
 
+  .form-input {
+    box-shadow: 0 4px 8px rgba(3, 3, 3, 0.4);
+  }
+
  .delete {
     width: 25%;
     padding: 0.8rem;

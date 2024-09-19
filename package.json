@@ -4,7 +4,7 @@
   "description": "Group Full Stack React Shopping List",
   "scripts": {
     "start": "node server/server.js | vite",
-    "client": "vite",
+    "client": "vite --host",
     "server": "nodemon --watch server server/server.js",
     "test": "vitest",
     "build": "vite build"
@@ -18,7 +18,8 @@
     "express": "^4.17.1",
     "pg": "^8.5.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^5.3.4"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.2.1",
