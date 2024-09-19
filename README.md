@@ -15,3 +15,12 @@ A wonderful shopping list to make sure you never forget something while grocery 
 - 'Delete' button deletes that specific item.
 
 - 'Purchase' button marks the item as purchased, it will revert to not being purchased upon page reload.
+
+
+## Color Palette:
+Body background #fff
+Card lvl 1 background rgb(244, 244, 243);
+Card lvl 2 background rgb(224, 224, 210);
+Header rgb(221, 218, 218);
+
+
