@@ -58,4 +58,71 @@ display: flex;
     text-align: center; 
     margin-bottom: 8px;
   }
+
+  /* ## BB BTN GRADIENT ## */
+
+/* add btn on:hover gradient animation: btn-hover-20 has 20px on the left margin so it is under what text is above it. btn-hover-full is for btns we want to take up the whole of the column. Control the size by adjusting column margins and padding */
+
+/* ## BTN-HOVER-20 LEFT MARGIN ## */
+
+.btn-hover-20 {
+  width: 300px;
+  background-size: 400% 100%;
+  border-radius: 8px;
+  transition: all .5s ease-in-out;
+  box-shadow: 5px 5px 20px 0px rgba(0,0,0,0.25);
+  margin-left: 20px;
+}
+
+.btn-hover-20:hover {
+  background-position: 100% 0;
+  transition: all .5s ease-in-out;
+}
+/* ## BTN-HOVER-FULL FULL-WIDTH ## */
+
+.btn-hover-full {
+  width: 100%;
+  background-size: 400% 100%;
+  border-radius: 8px;
+  box-shadow: 5px 5px 20px 0px rgba(0,0,0,0.25);
+  transition: all .5s ease-in-out;
+}
+
+.btn-hover-full:hover {
+  background-position: 100% 0;
+  transition: all .5s ease-in-out;
+}
+
+/* ## BTN-HOVER-CENTER CENTERED ## */
+
+.btn-hover-center {
+  width: 300px;
+  background-size: 400% 100%;
+  border-radius: 8px;
+  transition: all .5s ease-in-out;
+  box-shadow: 5px 5px 20px 0px rgba(0,0,0,0.25);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn-hover-center:hover {
+  background-position: 100% 0;
+  transition: all .5s ease-in-out;
+}
+
+/* ## COLORS FOR BTN-HOVER VARIANTS ## */
+
+.color-purple-gold {
+  background-image: linear-gradient(to right, #000, rgb(95, 52, 161), #cea800, #000);
+}
+.color-teal-gold {
+  background-image: linear-gradient(to right, #000, rgb(52, 161, 128), #ce9e00, #000);
+}
+.color-yellow-red {
+  background-image: linear-gradient(to right, #000, rgb(148, 161, 52), #ce4f00, #000);
+}
   
+
+.purchased {
+  opacity: 40%;
+}

@@ -23,9 +23,9 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
     const item = req.body;
     if (item.unit) {
-        const sqlText = `INSERT INTO items ("name", "quantity", "unit")
-                     VALUES ($1, $2, $3)`;
-        pool.query(sqlText, [item.name, item.quantity, item.unit])
+        const sqlText = `INSERT INTO items ("name", "quantity", "unit", "pricePerUnit")
+                     VALUES ($1, $2, $3, $4)`;
+        pool.query(sqlText, [item.name, item.quantity, item.unit, item.pricePerUnit])
         .then((result) => {
             console.log(`Added item to the database`, item);
             res.sendStatus(201);

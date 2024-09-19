@@ -1,29 +1,32 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './ItemForm.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function ItemForm({ fetchItems }) {
 
     let [newItemName, setNewItemName] = useState('');
     let [newItemUnit, setNewItemUnit] = useState('');
   const [newItemQuantity, setNewItemQuantity] = useState(0);
+  const [newItemPrice, setNewItemPrice] = useState(0);
 
   const handleInputChange = (e) => {
     const value = parseFloat(e.target.value);
     if (!isNaN(value)) {
         setNewItemQuantity(value);
+        setNewItemPrice(value);
     }
 };
    
 const addItem = () => {
   console.log('adding item');
-    axios.post('/api/items', { name: newItemName, quantity: newItemQuantity, unit: newItemUnit })
+    axios.post('/api/items', { name: newItemName, quantity: newItemQuantity, unit: newItemUnit, pricePerUnit: newItemPrice })
     .then(response => {
       console.log('item added');
         setNewItemName('');
         setNewItemQuantity('');
         setNewItemUnit('');
-        console.log(newItemName)
+        setNewItemPrice('')
         fetchItems();
     }).catch(err => {
         alert('Error your dumb. Fix you are dumb.')
@@ -80,7 +83,19 @@ const handleSubmit = (event) => {
           value={newItemUnit}
           onChange={(evt) => setNewItemUnit(evt.target.value)}
         />
-        <button type="submit">Add Item</button>
+         <div>
+            Enter a Price:
+        </div>
+        <label>
+          Price
+        </label>
+        <input
+          type="text"
+          placeholder="Price"
+          value={newItemPrice}
+          onChange={(evt) => setNewItemPrice(evt.target.value)}
+        />
+        <button className="color-green-gold btn-hover" type="submit">Add Item</button>
 </form>
 
 </>

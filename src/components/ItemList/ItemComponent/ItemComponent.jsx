@@ -30,6 +30,7 @@ function ItemComponent({ item, fetchItems }){
         <div className={item.isPurchased ? "purchased item" : "item"}>
             <p><strong>Item: </strong>{item.name}</p>
             <p>{item.quantity} {item.unit || 'units'}</p>
+            <p>Price: ${item.quantity*item.pricePerUnit}</p>
             <p>
                 {item.isPurchased?<>purchased</>:<><button className='delete' onClick={() => {deleteItem(event)}}>Delete</button> 
             <button className='purchase' onClick={() => setBought(item.id)}>Purchase</button></>}

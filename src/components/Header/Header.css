@@ -1,5 +1,8 @@
 .banner-header {
-  background-color: silver;
+  background-color: rgb(221, 218, 218);
   text-align: center;
   padding: 0.25em;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  margin-bottom: auto;
 }
