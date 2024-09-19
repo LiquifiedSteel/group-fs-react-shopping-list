@@ -11,7 +11,7 @@ CREATE TABLE items (
     "unit" VARCHAR(20)
 );
 
-INSERT INTO items ("name", "quantity")
-VALUES ('Milk', '2'), ('Eggs', '12'), ('Juice', '1');
+INSERT INTO items ("name", "quantity", "unit")
+VALUES ('Milk', '2', 'gallons'), ('Eggs', '12', 'cartons'), ('Juice', '1', 'bottle'), ('Cookies', '4', 'packages');
 
 DROP TABLE items;
