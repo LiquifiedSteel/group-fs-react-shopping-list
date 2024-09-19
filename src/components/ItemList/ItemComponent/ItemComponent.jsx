@@ -1,6 +1,9 @@
 import {useState} from 'react';
 import axios from 'axios';
+
+
 function ItemComponent({ item }){
+    const [bought, setBought] = useState(false);
     function deleteItem(event){
         axios({
             method: 'DELETE',
@@ -13,11 +16,11 @@ function ItemComponent({ item }){
 
 
     return (
-        <li>
+        <div className='item'>
             <p><strong>Item:</strong>{item.name}</p>
             <p>{item.quantity} {item.unit || 'units'}</p>
-            <p style="wi"><button onClick={() => {deleteItem(event)}}>Delete</button> <button onClick={() => bought()}>Purchase</button></p>
-        </li>
+            <p>{bought?<>purchased</>:<><button className='delete' onClick={() => {deleteItem(event)}}>Delete</button> <button className='purchase' onClick={() => setBought(true)}>Purchase</button></>}</p>
+        </div>
     )
 }
 export default ItemComponent;
