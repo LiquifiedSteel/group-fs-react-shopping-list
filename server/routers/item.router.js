@@ -50,6 +50,20 @@ router.post('/', (req, res) => {
     
 })
 
+// this put request marks the desired item as purchased or not purchased
+router.put('/:id', (req, res) => {
+    let reqId = req.params.id;
+    console.log("In PUT route");
+    const query = `UPDATE items SET "isPurchased"=NOT "isPurchased" WHERE "id" = $1;`;
+    pool.query(query, [reqId]).then((results) => {
+        res.sendStatus(200);
+    }).catch((error) => {
+        console.log('Error making PUT', error);
+        res.sendStatus(500);
+    });
+  });// end put request
+
+
 // this delete request removes a chosen item from the list
 router.delete('/:id', (req, res) => {
     let reqId = req.params.id;
