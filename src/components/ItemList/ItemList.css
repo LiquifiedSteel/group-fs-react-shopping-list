@@ -1,0 +1,61 @@
+.item {
+    max-width: 400px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: rgb(224, 224, 210);
+    box-shadow: 15px 19px 5px 0px rgba(151,149,149,0.75);
+-webkit-box-shadow: 15px 19px 5px 0px rgba(151,149,149,0.75);
+-moz-box-shadow: 15px 19px 5px 0px rgba(151,149,149,0.75);
+    border-radius: 10px;
+    border: 2px solid #333;
+    font-size: 24px;
+  }
+
+  .items {
+    border: 2px solid rgb(80, 43, 27);
+    max-width: 90%; 
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: rgb(244, 244, 243);
+    box-shadow: 15px 19px 5px 0px rgba(151,149,149,0.75);
+-webkit-box-shadow: 15px 19px 5px 0px rgba(151,149,149,0.75);
+-moz-box-shadow: 15px 19px 5px 0px rgba(151,149,149,0.75);
+justify-content: center;
+display: inline-flexbox;          
+flex-wrap: wrap;      
+
+align-items: center;     
+
+padding-bottom: 4px;
+margin-top: 4px;
+  }
+
+  .listButton {
+    box-shadow: 12px 11px 5px -9px rgba(151,149,149,0.75);
+-webkit-box-shadow: 12px 11px 5px -9px rgba(151,149,149,0.75);
+-moz-box-shadow: 12px 11px 5px -9px rgba(151,149,149,0.75);
+display: flex;
+    justify-content: center; 
+    align-items: center; 
+    padding: 12px;
+    margin-bottom: 8px;
+    font-size: xx-large;
+  }
+
+  #clear {
+    background-color: #b000b3;
+    max-width: 50%;
+    margin: 0 auto;
+    text-align: center; 
+    margin-bottom: 8px;
+}
+
+
+  #reset {
+    background-color: #00b386;
+    max-width: 50%;
+    margin: 0 auto;
+    text-align: center; 
+    margin-bottom: 8px;
+  }
+  

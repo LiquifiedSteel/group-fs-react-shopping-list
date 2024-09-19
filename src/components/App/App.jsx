@@ -24,7 +24,7 @@ function App() {
         <div className="App">
             <Header />
             <main>
-                <p>Under Construction...</p>
+                {items.length>0?<></>:<p>Under Construction...</p>}
             </main>
             <ItemForm fetchItems={fetchItems}/>
             <ItemList items={items} fetchItems={fetchItems} />

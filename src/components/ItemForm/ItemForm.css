@@ -48,15 +48,69 @@ form {
   button {
     width: 100%;
     padding: 0.8rem;
-    background-color: #007bff;
+    margin-bottom: 8px;
+    background-color: #66ff00;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 100px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+
+ .delete {
+    width: 25%;
+    padding: 0.8rem;
+    margin-bottom: 8px;
+    background-color: #ff4800;
+    color: white;
+    border: none;
+    border-radius: 100px;
     font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.3s ease-in-out;
   }
   
+  .purchase {
+    width: 25%;
+    padding: 0.8rem;
+    margin-bottom: 8px;
+    background-color: #00ffd0;
+    color: white;
+    border: none;
+    border-radius: 100px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+
+  .purchase:hover {
+    width: 25%;
+    padding: 0.8rem;
+    margin-bottom: 8px;
+    background-color: #00a2ff;
+    color: white;
+    border: none;
+    border-radius: 100px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+
+  .delete:hover {
+    width: 25%;
+    padding: 0.8rem;
+    margin-bottom: 8px;
+    background-color: #ffa600;
+    color: white;
+    border: none;
+    border-radius: 100px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+
+ 
   button:hover {
     background-color: #0056b3;
   }
