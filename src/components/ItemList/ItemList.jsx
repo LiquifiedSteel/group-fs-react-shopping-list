@@ -1,6 +1,7 @@
 import ItemComponent from './ItemComponent/ItemComponent';
 import axios from 'axios';
 import './ItemList.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function ItemList({ items, fetchItems }){
         function clearAll(event){
@@ -18,17 +19,38 @@ function ItemList({ items, fetchItems }){
             
          }
         }
+        function resetPurchases() {
+            for (let item of items) {
+                if (item.isPurchased) {
+                    axios({
+                        method: "PUT",
+                        url: `/api/items/purchased/${item.id}`
+                    }).then(response => {
+                        console.log('resetting', item.id);
+                        fetchItems();
+                    }).catch(err => console.error('error resetting', err));
+                }
+            }
+            
+        }
     return(
         <>
         <h2>Shopping List</h2>
 
-        <div className='items'>
-            <p>
-              <button className='listButton' id='clear' onClick={(event) => {clearAll(event)}}>Clear List</button>
-              <button className='listButton' id='reset' onClick={() => {location.reload()}}>Reset</button>
-            </p>
-            {items.map((item) => <ItemComponent item={item} key={item.id} fetchItems={fetchItems}/>)}
-        </div>
+            <div className='items'>
+                <div className="row">
+                <div className='col'>
+                    <button className='listButton color-purple-gold btn-hover-center' id='clear' onClick={(event) => {clearAll(event)}}>Clear List</button>
+                </div>
+                <div className='col'>
+                    <button className='listButton color-yellow-red btn-hover-center' id='reset' onClick={() => {resetPurchases()}}>Reset</button>
+                </div>
+                
+                </div>
+                <div className="row">
+                {items.map((item) => <ItemComponent item={item} key={item.id} fetchItems={fetchItems}/>)}
+                </div>
+            </div>
         </>
     )
 }
