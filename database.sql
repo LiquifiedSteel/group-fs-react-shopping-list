@@ -2,3 +2,16 @@
 -- It is also helpful to include some test data
 
 -- id, name, quantity (number BUT can take decimals), unit
+
+
+CREATE TABLE items (
+    "id" SERIAL PRIMARY KEY,
+    "name" VARCHAR(80) NOT NULL,
+    "quantity" DECIMAL(6, 2),
+    "unit" VARCHAR(20)
+);
+
+INSERT INTO items ("name", "quantity")
+VALUES ('Milk', '2'), ('Eggs', '12'), ('Juice', '1');
+
+DROP TABLE items;
