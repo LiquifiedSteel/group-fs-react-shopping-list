@@ -1,9 +1,19 @@
-import {useState} from 'react';
 import axios from 'axios';
 
 
 function ItemComponent({ item, fetchItems }){
-    const [bought, setBought] = useState(false);
+    function setBought(id){
+        axios({
+            method: 'PUT',
+            url: `/api/items/purchased/${id}`,
+        }).then(function(response) {
+            fetchItems();
+        }).catch(function(error) {
+            console.log('Error in PUT', error);
+            alert('Unable to edit item at this time. Please try again later.');
+        });
+    }
+
     function deleteItem(event){
         axios({
             method: 'DELETE',
@@ -17,10 +27,13 @@ function ItemComponent({ item, fetchItems }){
 
 
     return (
-        <div className='item'>
+        <div className={item.isPurchased ? "purchased item" : "item"}>
             <p><strong>Item: </strong>{item.name}</p>
             <p>{item.quantity} {item.unit || 'units'}</p>
-            <p>{bought?<>purchased</>:<><button className='delete' onClick={() => {deleteItem(event)}}>Delete</button> <button className='purchase' onClick={() => setBought(true)}>Purchase</button></>}</p>
+            <p>
+                {item.isPurchased?<>purchased</>:<><button className='delete' onClick={() => {deleteItem(event)}}>Delete</button> 
+            <button className='purchase' onClick={() => setBought(item.id)}>Purchase</button></>}
+            </p>
         </div>
     )
 }
