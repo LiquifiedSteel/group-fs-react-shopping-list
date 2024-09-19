@@ -42,11 +42,14 @@ const handleSubmit = (event) => {
 
   return (
 <>
-<h2>Add new item man </h2>
+<h2>Add new item</h2>
 <form onSubmit={(event) => {handleSubmit(event)}}>
         <label>
           Name
         </label>
+        <div>
+            Enter Name of Item:
+        </div>
         <input
           type="text"
           placeholder="Name"
@@ -54,10 +57,10 @@ const handleSubmit = (event) => {
           onChange={(evt) => setNewItemName(evt.target.value)}
         />
         <div>
-            Would you please put in a quantatity
+            Enter a Quantity:
         </div>
         <label>
-          Quantotity
+          Quantity
         </label>
         <input
           type="text"
@@ -66,7 +69,7 @@ const handleSubmit = (event) => {
           onChange={(evt) => setNewItemQuantity(evt.target.value)}
         />
         <div>
-            Maybe a unit.............
+            Enter a Unit:
         </div>
         <label>
           Unit
