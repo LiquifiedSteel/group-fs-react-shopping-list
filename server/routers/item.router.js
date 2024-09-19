@@ -23,7 +23,7 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
     const item = req.body;
     if (item.unit) {
-        const sqlText = `INSERT INTO items ("Name", "Quantity", "Unit")
+        const sqlText = `INSERT INTO items ("name", "quantity", "unit")
                      VALUES ($1, $2, $3)`;
         pool.query(sqlText, [item.name, item.quantity, item.unit])
         .then((result) => {
@@ -35,9 +35,9 @@ router.post('/', (req, res) => {
             res.sendStatus(500); // Good server always responds
         })
     } else {
-        const sqlText = `INSERT INTO items ("Name", "Quantity")
+        const sqlText = `INSERT INTO items ("name", "quantity")
                      VALUES ($1, $2)`;
-        pool.query(sqlText, [item.name, item.quantity, item.unit])
+        pool.query(sqlText, [item.name, item.quantity])
         .then((result) => {
             console.log(`Added item to the database`, item);
             res.sendStatus(201);
