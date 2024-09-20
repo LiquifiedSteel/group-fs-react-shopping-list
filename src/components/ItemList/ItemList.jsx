@@ -2,7 +2,8 @@ import ItemComponent from './ItemComponent/ItemComponent';
 import axios from 'axios';
 import './ItemList.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import ExplosionComponent from '../ExplosionComponent/ExplosionComponent';
 
 function ItemList({ items, fetchItems }){
         function clearAll(event){
@@ -28,12 +29,14 @@ function ItemList({ items, fetchItems }){
                         url: `/api/items/purchased/${item.id}`
                     }).then(response => {
                         console.log('resetting', item.id);
+                        setExplosion(true);
                         fetchItems();
                     }).catch(err => console.error('error resetting', err));
                 }
             }
             
         }
+        const [explosion, setExplosion] = useState(false);
         const divRef = useRef(null);
         useEffect(() => {
             if (divRef.current) {
@@ -52,7 +55,7 @@ function ItemList({ items, fetchItems }){
                 <div className='col'>
                     <button className='listButton color-yellow-red btn-hover-center' id='reset' onClick={() => {resetPurchases()}}>Reset</button>
                 </div>
-                
+                {explosion && <ExplosionComponent />}
                 </div>
                 <div className="row" ref={divRef}>
                 {items.map((item) => <ItemComponent item={item} key={item.id} fetchItems={fetchItems}/>)}
