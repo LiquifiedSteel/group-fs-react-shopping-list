@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import './ItemForm.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 function ItemForm({ fetchItems }) {
 
@@ -42,11 +43,17 @@ const handleSubmit = (event) => {
       alert('Hey stinky! you needs a name! and an amount, and an unit!!!');
     }
   }
+  const divRef = useRef(null);
+  useEffect(() => {
+      if (divRef.current) {
+          applyRotationEffect(divRef.current);
+      }
+  }, []);
 
   return (
 <>
 <h2>Add new item</h2>
-<form onSubmit={(event) => {handleSubmit(event)}}>
+<form onSubmit={(event) => {handleSubmit(event)}} ref={divRef}>
         <label>
           Name
         </label>
@@ -104,6 +111,24 @@ const handleSubmit = (event) => {
 
 </>
   )
+  function applyRotationEffect(element) {
+    let currentAngle = 0;
+    let lastTimestamp = null;
+
+    element.addEventListener("mouseenter", () => {
+      lastTimestamp = Date.now();
+      element.style.transition = "transform 5s linear";
+      element.style.transform = `rotate(${currentAngle + 360}deg)`;
+    });
+
+    element.addEventListener("mouseleave", () => {
+      const elapsed = Date.now() - lastTimestamp;
+      const percentComplete = elapsed / 5000;
+      currentAngle += percentComplete * 360;
+      element.style.transition = "none";
+      element.style.transform = `rotate(${currentAngle}deg)`;
+    });
+}
 
 
 }
