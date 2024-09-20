@@ -47,15 +47,15 @@ function ItemList({ items, fetchItems }){
             <div className='items'>
                 <div className="row">
                 <div className='col'>
-                    <button className='listButton color-purple-gold btn-hover-center' id='clear' onClick={(event) => {clearAll(event)}}>Clear List</button>
+                    <button ref={divRef} className='listButton color-purple-gold btn-hover-center' id='clear' onClick={(event) => {clearAll(event)}}>Clear List</button>
                 </div>
                 <div className='col'>
-                    <button className='listButton color-yellow-red btn-hover-center' id='reset' onClick={() => {resetPurchases()}}>Reset</button>
+                    <button ref={divRef} className='listButton color-yellow-red btn-hover-center' id='reset' onClick={() => {resetPurchases()}}>Reset</button>
                 </div>
                 
                 </div>
                 <div className="row">
-                {items.map((item) => <ItemComponent item={item} ref={divRef} key={item.id} fetchItems={fetchItems}/>)}
+                {items.map((item) => <ItemComponent item={item} key={item.id} fetchItems={fetchItems}/>)}
                 </div>
             </div>
         </>
