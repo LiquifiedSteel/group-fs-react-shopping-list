@@ -6,6 +6,29 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function ItemForm({ fetchItems }) {
 
+  const divRef = useRef(null);
+  let velocity = { x: 0, y: 0 };
+  let acceleration = { x: 0, y: 0 };
+  let position = { x: 0, y: 0 }; 
+  const maxSpeed = 10;
+  const friction = 0.9;
+
+  useEffect(() => {
+      const element = divRef.current;
+      if (element) {
+          const moveAwayFromMouse = handleMouseMovement;
+          
+          element.addEventListener("mousemove", moveAwayFromMouse);
+
+          updatePosition();
+          // applyRotationAndMovementEffect();
+          return () => {
+              element.removeEventListener("mousemove", moveAwayFromMouse);
+          };
+      }
+  }, []);
+  
+
     let [newItemName, setNewItemName] = useState('');
     let [newItemUnit, setNewItemUnit] = useState('');
   const [newItemQuantity, setNewItemQuantity] = useState(0);
@@ -43,12 +66,52 @@ const handleSubmit = (event) => {
       alert('Hey stinky! you needs a name! and an amount, and an unit!!!');
     }
   }
-  const divRef = useRef(null);
-  useEffect(() => {
-      if (divRef.current) {
-          applyRotationAndMovementEffect(divRef.current);
-      }
-  }, []);
+
+  function handleMouseMovement(event) {
+    const element = divRef.current;
+    if (!element) return;
+
+    const rect = element.getBoundingClientRect();
+    const mouseX = event.clientX;
+    const mouseY = event.clientY;
+    const itemX = rect.left + rect.width / 2;
+    const itemY = rect.top + rect.height / 2;
+
+    const dx = itemX - mouseX;
+    const dy = itemY - mouseY;
+    const distance = Math.sqrt(dx * dx + dy * dy);
+
+    if (distance < 200) {
+        const forceMagnitude = (200 - distance) / 200; 
+        acceleration.x = (dx / distance) * forceMagnitude;
+        acceleration.y = (dy / distance) * forceMagnitude;
+    } else {
+        acceleration.x = 0;
+        acceleration.y = 0;
+    }
+}
+
+function updatePosition() {
+
+    velocity.x += acceleration.x;
+    velocity.y += acceleration.y;
+
+    velocity.x = Math.min(maxSpeed, Math.max(-maxSpeed, velocity.x));
+    velocity.y = Math.min(maxSpeed, Math.max(-maxSpeed, velocity.y));
+
+    velocity.x *= friction;
+    velocity.y *= friction;
+
+    position.x += velocity.x;
+    position.y += velocity.y;
+
+    const element = divRef.current;
+    if (element) {
+        element.style.transform = `translate(${position.x}px, ${position.y}px)`;
+    }
+
+    requestAnimationFrame(updatePosition);
+}
 
   return (
 <>
