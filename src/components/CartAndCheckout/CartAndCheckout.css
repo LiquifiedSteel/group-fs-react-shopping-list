@@ -1,9 +1,17 @@
 .butt {
     background-color: rgb(206, 12, 12);
     margin: 8px;
+    transition: .5s;
 }
 
 .sub-header {
     max-width: 900px;
     margin: 0 auto;
+}
+
+.spinTime {
+    transition: 10s;
+    rotate: 72000deg;
+    transform: translateY(1500px);
+    transition-timing-function: linear;
 }

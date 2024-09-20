@@ -16,6 +16,42 @@ function CartAndCheckout({items}){
         return numberItems;
     }
     
+    
+    function spinTime1() {
+        let counter = 0;
+        setInterval(() => {
+             const btn = document.getElementById("cartBtn");
+            if (!btn.classList.contains("spinTime")) {
+                console.log("start");
+                btn.classList.add("spinTime");
+                counter = 0;
+            } else if (counter === 10) {
+                btn.classList.remove("spinTime");
+                console.log("stop")
+            } else {
+                counter++;
+                console.log(counter);
+            }
+        }, 1000)
+    }
+
+    function spinTime2() {
+        let counter = 0;
+        setInterval(() => {
+             const btn = document.getElementById("checkout");
+            if (!btn.classList.contains("spinTime")) {
+                console.log("start");
+                btn.classList.add("spinTime");
+                counter = 0;
+            } else if (counter === 10) {
+                btn.classList.remove("spinTime");
+                console.log("stop")
+            } else {
+                counter++;
+                console.log(counter);
+            }
+        }, 1000)
+    }
 
     useEffect(() => {
         setNumItems(inCart());
@@ -27,8 +63,8 @@ function CartAndCheckout({items}){
         
         <div className='row sub-header'>
 
-        <button className="col butt">View Cart 🛒 {numItems}</button>
-        <button className="col butt">Proceed to Checkout</button>
+        <button id='cartBtn' onMouseOver={() => spinTime1()} className="col butt">View Cart 🛒 {numItems}</button>
+        <button id='checkout' onMouseOver={() => spinTime2()} className="col butt">Proceed to Checkout</button>
         </div>
         </>
     )
