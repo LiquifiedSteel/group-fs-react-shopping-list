@@ -1,7 +1,7 @@
 .butt {
     background-color: rgb(206, 12, 12);
     margin: 8px;
-    transition: .5s;
+    transition: 10s;
 }
 
 .sub-header {
@@ -10,8 +10,8 @@
 }
 
 .spinTime {
-    transition: 10s;
+    transition: 50s;
     rotate: 72000deg;
-    transform: translateY(1500px);
+    transform: translateY(1000px);
     transition-timing-function: linear;
 }

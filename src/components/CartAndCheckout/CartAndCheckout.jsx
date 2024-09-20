@@ -5,7 +5,8 @@ import {useState, useEffect} from 'react';
 
 function CartAndCheckout({items}){
     const [numItems, setNumItems] = useState(0);
-   
+    let first1 = false;
+    let first2 = false;
     function inCart() {
         let numberItems = 0;
         for(let item of items) {
@@ -18,43 +19,51 @@ function CartAndCheckout({items}){
     
     
     function spinTime1() {
-        let counter = 0;
-        setInterval(() => {
-             const btn = document.getElementById("cartBtn");
-            if (!btn.classList.contains("spinTime")) {
-                console.log("start");
-                btn.classList.add("spinTime");
-                counter = 0;
-            } else if (counter === 10) {
-                btn.classList.remove("spinTime");
-                console.log("stop")
-            } else {
-                counter++;
-                console.log(counter);
-            }
-        }, 1000)
+        if (first1) {
+            first1 = false;
+            let counter = 0;
+            setInterval(() => {
+                const btn = document.getElementById("cartBtn");
+                if (!btn.classList.contains("spinTime")) {
+                    console.log("start");
+                    btn.classList.add("spinTime");
+                    counter = 0;
+                } else if (counter === 10) {
+                    btn.classList.remove("spinTime");
+                    console.log("stop")
+                } else {
+                    counter++;
+                    console.log(counter);
+                }
+            }, 5000)
+        }
     }
 
     function spinTime2() {
-        let counter = 0;
-        setInterval(() => {
-             const btn = document.getElementById("checkout");
-            if (!btn.classList.contains("spinTime")) {
-                console.log("start");
-                btn.classList.add("spinTime");
-                counter = 0;
-            } else if (counter === 10) {
-                btn.classList.remove("spinTime");
-                console.log("stop")
-            } else {
-                counter++;
-                console.log(counter);
-            }
-        }, 1000)
+        if (first2) {
+            first2 = false;
+            let counter = 0;
+            setInterval(() => {
+                const btn = document.getElementById("checkout");
+                if (!btn.classList.contains("spinTime")) {
+                    console.log("start");
+                    btn.classList.add("spinTime");
+                    counter = 0;
+                } else if (counter === 10) {
+                    btn.classList.remove("spinTime");
+                    console.log("stop")
+                } else {
+                    counter++;
+                    console.log(counter);
+                }
+            }, 5000)
+        }
     }
 
     useEffect(() => {
         setNumItems(inCart());
+        first1 = true;
+        first2 = true;
     }, [items]);
     return(
         <>
