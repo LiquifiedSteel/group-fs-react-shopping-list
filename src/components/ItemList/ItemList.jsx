@@ -54,8 +54,8 @@ function ItemList({ items, fetchItems }){
                 </div>
                 
                 </div>
-                <div className="row" ref={divRef}>
-                {items.map((item) => <ItemComponent item={item} key={item.id} fetchItems={fetchItems}/>)}
+                <div className="row">
+                {items.map((item) => <ItemComponent item={item} ref={divRef} key={item.id} fetchItems={fetchItems}/>)}
                 </div>
             </div>
         </>
