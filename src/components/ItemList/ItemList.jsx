@@ -2,6 +2,7 @@ import ItemComponent from './ItemComponent/ItemComponent';
 import axios from 'axios';
 import './ItemList.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useEffect, useRef } from 'react';
 
 function ItemList({ items, fetchItems }){
         function clearAll(event){
@@ -33,6 +34,12 @@ function ItemList({ items, fetchItems }){
             }
             
         }
+        const divRef = useRef(null);
+        useEffect(() => {
+            if (divRef.current) {
+                applyRotationEffect(divRef.current);
+            }
+        }, []);
     return(
         <>
         <h2>Shopping List</h2>
@@ -47,12 +54,30 @@ function ItemList({ items, fetchItems }){
                 </div>
                 
                 </div>
-                <div className="row">
+                <div className="row" ref={divRef}>
                 {items.map((item) => <ItemComponent item={item} key={item.id} fetchItems={fetchItems}/>)}
                 </div>
             </div>
         </>
     )
+    function applyRotationEffect(element) {
+        let currentAngle = 0;
+        let lastTimestamp = null;
+    
+        element.addEventListener("mouseenter", () => {
+          lastTimestamp = Date.now();
+          element.style.transition = "transform 5s linear";
+          element.style.transform = `rotate(${currentAngle + 360}deg)`;
+        });
+    
+        element.addEventListener("mouseleave", () => {
+          const elapsed = Date.now() - lastTimestamp;
+          const percentComplete = elapsed / 5000;
+          currentAngle += percentComplete * 360;
+          element.style.transition = "none";
+          element.style.transform = `rotate(${currentAngle}deg)`;
+        });
+    }
 }
 
 export default ItemList;
