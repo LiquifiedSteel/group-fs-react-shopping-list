@@ -1,3 +1,5 @@
+### SPINNY WARNING
+
 # React Shopping List
 
 A wonderful shopping list to make sure you never forget something while grocery shopping again.
