@@ -50,7 +50,7 @@ function ItemList({ items, fetchItems }){
                     <button ref={divRef} className='listButton color-purple-gold btn-hover-center' id='clear' onClick={(event) => {clearAll(event)}}>Clear List</button>
                 </div>
                 <div className='col'>
-                    <button ref={divRef} className='listButton color-yellow-red btn-hover-center' id='reset' onClick={() => {resetPurchases()}}>Reset</button>
+                    <button ref={divRef} className='listButton color-yellow-red btn-hover-center' id='reset' onClick={(event) => {resetPurchases(event)}}>Reset</button>
                 </div>
                 
                 </div>

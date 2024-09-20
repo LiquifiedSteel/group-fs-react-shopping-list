@@ -46,7 +46,7 @@ const handleSubmit = (event) => {
   const divRef = useRef(null);
   useEffect(() => {
       if (divRef.current) {
-          applyRotationEffect(divRef.current);
+          applyRotationAndMovementEffect(divRef.current);
       }
   }, []);
 
@@ -111,25 +111,51 @@ const handleSubmit = (event) => {
 
 </>
   )
-  function applyRotationEffect(element) {
+  function applyRotationAndMovementEffect(element) {
     let currentAngle = 0;
-    let lastTimestamp = null;
+    let movementTimestamp = 0;
+    let animationFrameId = null;
+
+    
+    const moveRandomly = () => {
+        const randomX = Math.random() * (window.innerWidth - element.offsetWidth);
+        const randomY = Math.random() * (window.innerHeight - element.offsetHeight);
+
+        element.style.position = 'absolute'; 
+        element.style.left = `${randomX}px`;
+        element.style.top = `${randomY}px`;
+    };
+
+   
+    const rotateAndMove = (timestamp) => {
+        if (!movementTimestamp) movementTimestamp = timestamp;
+
+        const elapsed = timestamp - movementTimestamp;
+
+        // Rotate continuously
+        currentAngle += 0.2; 
+        element.style.transform = `rotate(${currentAngle}deg)`;
+
+        // Move every second (1000ms)
+        if (elapsed >= 1000) {
+            moveRandomly();
+            movementTimestamp = timestamp; 
+        }
+
+        animationFrameId = requestAnimationFrame(rotateAndMove); 
+    };
 
     element.addEventListener("mouseenter", () => {
-      lastTimestamp = Date.now();
-      element.style.transition = "transform 5s linear";
-      element.style.transform = `rotate(${currentAngle + 360}deg)`;
+        if (!animationFrameId) {
+            animationFrameId = requestAnimationFrame(rotateAndMove);
+        }
     });
 
     element.addEventListener("mouseleave", () => {
-      const elapsed = Date.now() - lastTimestamp;
-      const percentComplete = elapsed / 5000;
-      currentAngle += percentComplete * 360;
-      element.style.transition = "none";
-      element.style.transform = `rotate(${currentAngle}deg)`;
+        cancelAnimationFrame(animationFrameId); 
+        animationFrameId = null;
     });
-}
-
+  }
 
 }
 
