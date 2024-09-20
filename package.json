@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Group Full Stack React Shopping List",
   "scripts": {
-    "start": "node server/server.js | vite",
+    "start": "node server/server.js",
     "client": "vite --host",
     "server": "nodemon --watch server server/server.js",
     "test": "vitest",
