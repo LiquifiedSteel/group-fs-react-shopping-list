@@ -3,7 +3,7 @@
 function ExplosionComponent(){
     return(
         <>
-        <img src='src/assets/explosiongif.webp' style=""/>
+        <img src='src/assets/explosiongif.webp'/>
         </>
     )
 }

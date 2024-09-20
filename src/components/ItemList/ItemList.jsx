@@ -29,12 +29,12 @@ function ItemList({ items, fetchItems }){
                         url: `/api/items/purchased/${item.id}`
                     }).then(response => {
                         console.log('resetting', item.id);
-                        setExplosion(true);
+                        
                         fetchItems();
                     }).catch(err => console.error('error resetting', err));
                 }
             }
-            
+            setExplosion(true);
         }
         const [explosion, setExplosion] = useState(false);
         const divRef = useRef(null);
